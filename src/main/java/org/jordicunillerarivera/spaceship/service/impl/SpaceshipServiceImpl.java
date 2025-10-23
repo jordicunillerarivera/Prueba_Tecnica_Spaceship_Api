@@ -8,6 +8,9 @@ import org.jordicunillerarivera.spaceship.repository.SpaceshipRepository;
 import org.jordicunillerarivera.spaceship.service.SpaceshipService;
 import org.jordicunillerarivera.spaceship.service.mapper.SpaceshipMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -29,6 +32,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     }
 
     @Override
+    @Cacheable(value = "spaceships", key = "#id")
     public SpaceshipDTO findById(Long id) {
         return repository.findById(id)
                 .map(SpaceshipMapper::toDto)
@@ -51,6 +55,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
 
     @Override
     @Transactional
+    @CachePut(value = "spaceships", key = "#id")
     public SpaceshipDTO update(Long id, CreateSpaceshipDTO dto) {
         Spaceship existing = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Spaceship not found with id " + id));
@@ -66,6 +71,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
 
     @Override
     @Transactional
+    @CacheEvict(value = "spaceships", key = "#id")
     public void delete(Long id) {
         if (!repository.existsById(id)) {
             throw new ResourceNotFoundException("Spaceship not found with id " + id);
