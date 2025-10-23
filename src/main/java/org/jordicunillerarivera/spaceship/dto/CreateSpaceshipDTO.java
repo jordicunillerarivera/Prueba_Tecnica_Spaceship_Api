@@ -1,4 +1,4 @@
-package org.jordicunillerarivera.dto;
+package org.jordicunillerarivera.spaceship.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PositiveOrZero;

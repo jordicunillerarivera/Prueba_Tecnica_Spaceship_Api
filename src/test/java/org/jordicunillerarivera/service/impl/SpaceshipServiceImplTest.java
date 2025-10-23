@@ -1,11 +1,11 @@
 package org.jordicunillerarivera.service.impl;
 
-import org.jordicunillerarivera.dto.CreateSpaceshipDTO;
-import org.jordicunillerarivera.dto.SpaceshipDTO;
-import org.jordicunillerarivera.model.Spaceship;
-import org.jordicunillerarivera.repository.SpaceshipRepository;
-import org.jordicunillerarivera.exception.ResourceNotFoundException;
-import org.jordicunillerarivera.service.impl.SpaceshipServiceImpl;
+import org.jordicunillerarivera.spaceship.dto.CreateSpaceshipDTO;
+import org.jordicunillerarivera.spaceship.dto.SpaceshipDTO;
+import org.jordicunillerarivera.spaceship.model.Spaceship;
+import org.jordicunillerarivera.spaceship.repository.SpaceshipRepository;
+import org.jordicunillerarivera.spaceship.exception.ResourceNotFoundException;
+import org.jordicunillerarivera.spaceship.service.impl.SpaceshipServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;

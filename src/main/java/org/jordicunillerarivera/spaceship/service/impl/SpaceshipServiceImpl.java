@@ -1,12 +1,12 @@
-package org.jordicunillerarivera.service.impl;
+package org.jordicunillerarivera.spaceship.service.impl;
 
-import org.jordicunillerarivera.dto.CreateSpaceshipDTO;
-import org.jordicunillerarivera.dto.SpaceshipDTO;
-import org.jordicunillerarivera.exception.ResourceNotFoundException;
-import org.jordicunillerarivera.model.Spaceship;
-import org.jordicunillerarivera.repository.SpaceshipRepository;
-import org.jordicunillerarivera.service.SpaceshipService;
-import org.jordicunillerarivera.service.mapper.SpaceshipMapper;
+import org.jordicunillerarivera.spaceship.dto.CreateSpaceshipDTO;
+import org.jordicunillerarivera.spaceship.dto.SpaceshipDTO;
+import org.jordicunillerarivera.spaceship.exception.ResourceNotFoundException;
+import org.jordicunillerarivera.spaceship.model.Spaceship;
+import org.jordicunillerarivera.spaceship.repository.SpaceshipRepository;
+import org.jordicunillerarivera.spaceship.service.SpaceshipService;
+import org.jordicunillerarivera.spaceship.service.mapper.SpaceshipMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

@@ -1,8 +1,8 @@
-package org.jordicunillerarivera.service.mapper;
+package org.jordicunillerarivera.spaceship.service.mapper;
 
-import org.jordicunillerarivera.dto.CreateSpaceshipDTO;
-import org.jordicunillerarivera.dto.SpaceshipDTO;
-import org.jordicunillerarivera.model.Spaceship;
+import org.jordicunillerarivera.spaceship.dto.CreateSpaceshipDTO;
+import org.jordicunillerarivera.spaceship.dto.SpaceshipDTO;
+import org.jordicunillerarivera.spaceship.model.Spaceship;
 
 public final class SpaceshipMapper {
     private SpaceshipMapper() {}

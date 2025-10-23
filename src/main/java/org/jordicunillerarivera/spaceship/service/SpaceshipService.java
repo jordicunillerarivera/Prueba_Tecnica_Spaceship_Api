@@ -1,7 +1,7 @@
-package org.jordicunillerarivera.service;
+package org.jordicunillerarivera.spaceship.service;
 
-import org.jordicunillerarivera.dto.CreateSpaceshipDTO;
-import org.jordicunillerarivera.dto.SpaceshipDTO;
+import org.jordicunillerarivera.spaceship.dto.CreateSpaceshipDTO;
+import org.jordicunillerarivera.spaceship.dto.SpaceshipDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

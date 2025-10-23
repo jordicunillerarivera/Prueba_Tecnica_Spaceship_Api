@@ -1,4 +1,4 @@
-package org.jordicunillerarivera.model;
+package org.jordicunillerarivera.spaceship.model;
 
 import jakarta.persistence.*;
 

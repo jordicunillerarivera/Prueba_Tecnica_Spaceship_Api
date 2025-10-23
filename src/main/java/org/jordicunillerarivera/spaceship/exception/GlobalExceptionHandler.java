@@ -1,4 +1,4 @@
-package org.jordicunillerarivera.exception;
+package org.jordicunillerarivera.spaceship.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

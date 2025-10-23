@@ -1,8 +1,8 @@
-package org.jordicunillerarivera.controller;
+package org.jordicunillerarivera.spaceship.controller;
 
-import org.jordicunillerarivera.dto.CreateSpaceshipDTO;
-import org.jordicunillerarivera.dto.SpaceshipDTO;
-import org.jordicunillerarivera.service.SpaceshipService;
+import org.jordicunillerarivera.spaceship.dto.CreateSpaceshipDTO;
+import org.jordicunillerarivera.spaceship.dto.SpaceshipDTO;
+import org.jordicunillerarivera.spaceship.service.SpaceshipService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

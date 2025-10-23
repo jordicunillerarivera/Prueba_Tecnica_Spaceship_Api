@@ -1,4 +1,4 @@
-package org.jordicunillerarivera.exception;
+package org.jordicunillerarivera.spaceship.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException() {super();}
