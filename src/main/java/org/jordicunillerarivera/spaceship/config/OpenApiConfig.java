@@ -12,9 +12,9 @@ public class OpenApiConfig {
     public OpenAPI api() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Spaceship API")
-                        .description("CRUD de naves espaciales de series y peliculas")
-                        .version("1.0.0")
-                        .contact(new Contact().name("Jordi Cunillera Rivera").email("jordicunillera1@gmail.com")));
+                        .title(AppConstants.TITLE)
+                        .description(AppConstants.DESC)
+                        .version(AppConstants.VER)
+                        .contact(new Contact().name(AppConstants.CONTACT_NAME).email(AppConstants.CONTACT_EMAIL)));
     }
 }

@@ -1,5 +1,6 @@
 package org.jordicunillerarivera.spaceship.service.impl;
 
+import org.jordicunillerarivera.spaceship.config.AppConstants;
 import org.jordicunillerarivera.spaceship.dto.CreateSpaceshipDTO;
 import org.jordicunillerarivera.spaceship.dto.SpaceshipDTO;
 import org.jordicunillerarivera.spaceship.exception.ResourceNotFoundException;
@@ -40,7 +41,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     public SpaceshipDTO findById(Long id) {
         return repository.findById(id)
                 .map(SpaceshipMapper::toDto)
-                .orElseThrow(() -> new ResourceNotFoundException("Spaceship not found with id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(AppConstants.SPACESHIP_NOT_FOUND_ID + id));
     }
 
     @Override
@@ -65,7 +66,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     @CachePut(value = "spaceships", key = "#id")
     public SpaceshipDTO update(Long id, CreateSpaceshipDTO dto) {
         Spaceship existing = repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Spaceship not found with id " + id));
+                .orElseThrow(() -> new ResourceNotFoundException(AppConstants.SPACESHIP_NOT_FOUND_ID + id));
 
         existing.setName(dto.name());
         existing.setModel(dto.model());
@@ -84,7 +85,7 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     @CacheEvict(value = "spaceships", key = "#id")
     public void delete(Long id) {
         if (!repository.existsById(id)) {
-            throw new ResourceNotFoundException("Spaceship not found with id " + id);
+            throw new ResourceNotFoundException(AppConstants.SPACESHIP_NOT_FOUND_ID + id);
         }
         repository.deleteById(id);
         eventProducer.sendDeleted(id);

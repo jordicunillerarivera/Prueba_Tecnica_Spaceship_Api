@@ -1,5 +1,6 @@
 package org.jordicunillerarivera.spaceship.exception;
 
+import org.jordicunillerarivera.spaceship.config.AppConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -26,7 +27,7 @@ public class GlobalExceptionHandler {
         for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
             errors.put(fieldError.getField(), fieldError.getDefaultMessage());
         }
-        String message = "Validation failed: " + errors;
+        String message = AppConstants.VALIDATION_FAILED + errors;
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(new ApiError(LocalDateTime.now(), HttpStatus.BAD_REQUEST.value(), message));
     }
@@ -40,6 +41,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleGeneric(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new ApiError(LocalDateTime.now(), 500, "Unexpected error: " + ex.getMessage()));
+                .body(new ApiError(LocalDateTime.now(), 500, AppConstants.UNEXPECTED_ERROR + ex.getMessage()));
     }
 }
