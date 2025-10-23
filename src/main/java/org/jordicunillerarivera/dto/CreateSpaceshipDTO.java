@@ -1,9 +1,10 @@
 package org.jordicunillerarivera.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 
-public record CreateSpaceshipDTO(@NotBlank String name,
-                                 String model,
-                                 String manufacturer,
-                                 @NotNull Integer crewCapacity) {}
+public record CreateSpaceshipDTO(@NotBlank @Size(max = 255) String name,
+                                 @Size(max = 255) String model,
+                                 @Size(max = 255) String manufacturer,
+                                 @PositiveOrZero Integer crewCapacity) {}
