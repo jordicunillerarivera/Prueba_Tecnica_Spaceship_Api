@@ -47,7 +47,7 @@ public class SpaceshipController {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.create(dto));
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<SpaceshipDTO> update(@PathVariable Long id, @Valid @RequestBody CreateSpaceshipDTO dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
