@@ -15,11 +15,21 @@ spring:
     type: caffeine
   caffeine:
     spec: maximumSize=100,expireAfterWrite=10m
+  kafka:
+    bootstrap-servers: localhost:90922
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: spaceship-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    properties:
+      spring.json.trusted.packages: '*'
 
 
 server:
   port: 8080
-
 
 management:
   endpoints:

@@ -6,6 +6,7 @@ import org.jordicunillerarivera.spaceship.exception.ResourceNotFoundException;
 import org.jordicunillerarivera.spaceship.model.Spaceship;
 import org.jordicunillerarivera.spaceship.repository.SpaceshipRepository;
 import org.jordicunillerarivera.spaceship.service.SpaceshipService;
+import org.jordicunillerarivera.spaceship.service.kafka.SpaceshipEventProducer;
 import org.jordicunillerarivera.spaceship.service.mapper.SpaceshipMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -20,10 +21,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class SpaceshipServiceImpl implements SpaceshipService {
     private final SpaceshipRepository repository;
+    private final SpaceshipEventProducer eventProducer;
 
     @Autowired
-    public SpaceshipServiceImpl (SpaceshipRepository repository) {
+    public SpaceshipServiceImpl (SpaceshipRepository repository,
+                                 SpaceshipEventProducer eventProducer) {
         this.repository = repository;
+        this.eventProducer = eventProducer;
     }
 
     @Override
@@ -50,7 +54,10 @@ public class SpaceshipServiceImpl implements SpaceshipService {
     public SpaceshipDTO create(CreateSpaceshipDTO dto) {
         Spaceship entity = SpaceshipMapper.toEntity(dto);
         Spaceship saved = repository.save(entity);
-        return SpaceshipMapper.toDto(saved);
+        SpaceshipDTO result = SpaceshipMapper.toDto(saved);
+
+        eventProducer.sendCreated(result);
+        return result;
     }
 
     @Override
@@ -66,7 +73,10 @@ public class SpaceshipServiceImpl implements SpaceshipService {
         existing.setCrewCapacity(dto.crewCapacity());
 
         Spaceship updated = repository.save(existing);
-        return SpaceshipMapper.toDto(updated);
+        SpaceshipDTO result = SpaceshipMapper.toDto(updated);
+
+        eventProducer.sendUpdated(result);
+        return result;
     }
 
     @Override
@@ -77,5 +87,6 @@ public class SpaceshipServiceImpl implements SpaceshipService {
             throw new ResourceNotFoundException("Spaceship not found with id " + id);
         }
         repository.deleteById(id);
+        eventProducer.sendDeleted(id);
     }
 }
