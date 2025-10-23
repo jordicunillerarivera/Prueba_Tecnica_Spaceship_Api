@@ -24,9 +24,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
+                                "/v3/api-docs/**",
+                                "/swagger-ui.html",
+                                "/webjars/**"
                         ).permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/**").authenticated()
+                        .anyRequest().permitAll())
                 // HTTP Basic simple (sin usuarios externos)
                 .httpBasic(Customizer.withDefaults());
         return http.build();
