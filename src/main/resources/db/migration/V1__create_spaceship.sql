@@ -4,5 +4,5 @@ CREATE TABLE spaceship (
     model VARCHAR(255),
     manufacturer VARCHAR(255),
     crew_capacity INT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
