@@ -92,7 +92,7 @@ docker logs -f spaceship-api-container
 
 # Kafka 
 
-* Todos los eventos de create, update y delete se publican a al topico `spaceship-events`.
+* Todos los eventos de create, update y delete se publican al topico `spaceship-events`.
 
 ---
 
